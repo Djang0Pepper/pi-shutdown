@@ -1,6 +1,5 @@
 pi-shutdown
 ===========
-
 Shutdown/reboot(/power on) Raspberry Pi with pushbutton
 
 ## Usage:
@@ -16,7 +15,7 @@ While shut down, if button is connected to GPIO pin 5, then pressing the button 
 ## Autostart the script:
 If you’re using systemd then create a file called pishutdown.service in /etc/systemd/system/
 (replace #path\_to\_pishutdown with appropriate path):
-
+```
 [Service]
 ExecStart=/usr/bin/python3 ~/Python/pi-shutdown/pishutdown.py
 WorkingDirectory= ~/Python/pi-shutdown/
@@ -29,13 +28,18 @@ Group=root
 
 [Install]
 WantedBy=multi-user.target
+```
 
 ## Enable service:
+```
 sudo systemctl enable pishutdown.service
+```
 Run service (will be automatically started on next reboot):
+```
 sudo systemctl start pishutdown.service
+```
 
-## Added by fred
+## Added by fred:
 led toggle during normal running
 led will keep high during reboot
 led will be low if shutdown
