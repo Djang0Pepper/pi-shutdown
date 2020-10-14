@@ -1,0 +1,22 @@
+##Autostart the script
+#If you’re using systemd then create a file called pishutdown.service in /etc/systemd/system/
+#(replace #path\_to\_pishutdown with appropriate path):
+
+
+[Service]
+ExecStart=/usr/bin/python3 ~/Python/pi-shutdown/pishutdown.py
+WorkingDirectory= ~/Python/pi-shutdown/
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pishutdown
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
+##Enable service:
+#sudo systemctl enable pishutdown.service
+#Run service (will be automatically started on next reboot):
+#sudo systemctl start pishutdown.service
