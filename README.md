@@ -34,3 +34,8 @@ WantedBy=multi-user.target
 sudo systemctl enable pishutdown.service
 Run service (will be automatically started on next reboot):
 sudo systemctl start pishutdown.service
+
+## Added by fred
+led toggle during normal running
+led will keep high during reboot
+led will be low if shutdown
