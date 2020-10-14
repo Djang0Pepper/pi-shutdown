@@ -8,7 +8,7 @@ import time
 
 # pushbutton connected to this GPIO pin, using pin 5 also has the benefit of
 # waking / powering up Raspberry Pi when button is pressed
-shutdownPin = 5
+shutdownPin = 401
 
 # if button pressed for at least this long then shut down. if less then reboot.
 shutdownMinSeconds = 3
