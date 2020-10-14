@@ -14,8 +14,8 @@ When button is pressed for less than 3 seconds, Pi reboots. If pressed for more 
 While shut down, if button is connected to GPIO pin 5, then pressing the button powers on Pi.
 
 ## Autostart the script:
-#If you’re using systemd then create a file called pishutdown.service in /etc/systemd/system/
-#(replace #path\_to\_pishutdown with appropriate path):
+If you’re using systemd then create a file called pishutdown.service in /etc/systemd/system/
+(replace #path\_to\_pishutdown with appropriate path):
 
 [Service]
 ExecStart=/usr/bin/python3 ~/Python/pi-shutdown/pishutdown.py
