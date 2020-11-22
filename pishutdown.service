@@ -1,15 +1,19 @@
 ##Autostart the script
 #If you’re using systemd then create a file called pishutdown.service in /etc/systemd/system/
 #(replace #path\_to\_pishutdown with appropriate path):
+[Unit]
+Description=Power Button shutdonw & LED
+After=network.target
 
 
 [Service]
-ExecStart=/usr/bin/python3 ~/Python/pi-shutdown/pishutdown.py
-WorkingDirectory= ~/Python/pi-shutdown/
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/pi-shutdown/pishutdown.py
+WorkingDirectory=/home/pi/pi-shutdown/
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=pishutdown
+SyslogIdentifier=pi-shutdown
 User=root
 Group=root
 

@@ -1,24 +1,53 @@
-pi-shutdown
+#pi-shutdown
 ===========
 Shutdown/reboot(/power on) Raspberry Pi with pushbutton
 
-## Usage:
+## Pinout :
 Connect pushbutton to GPIO pin 40 gpio 21 and ground then
+
 Connect led        to GPIO pin 37 gpio 26 and ground then run:
+
+check image  
+
+## Install 
+
 ```
+cd /home/pi
+sudo git clone https://github.com/Djang0Pepper/TMIGE.git
+sudo pip install RPi.GPIO
 sudo python pishutdown.py
 ```
 
-When button is pressed for less than 3 seconds, Pi reboots. If pressed for more than 3 seconds it shuts down.
-While shut down, if button is connected to GPIO pin 5, then pressing the button powers on Pi.
+test led blink then short press for rebbot and long press to stop
 
-## Autostart the script:
+
+## Autostart the script and Enable service:
+
 If you’re using systemd then create a file called pishutdown.service in */etc/systemd/system/*
-(replace #path\_to\_pishutdown with appropriate path):
+
+(replace #path /home/pi/pishutdown with appropriate your path):
+
+```
+sudo cp /home/pi/pi-shutdown/pishutdown.service  /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable pishutdown.service
+sudo systemctl restart pishutdown.service
+sudo systemctl status pishutdown.service
+```
+
+
+## USAGE
+
+When button is pressed for less than 3 seconds, Pi reboot. 
+
+If pressed for more than 3 seconds it will shutdown.
+
+
+## Service file
 ```
 [Service]
-ExecStart=/usr/bin/python3 ~/Python/pi-shutdown/pishutdown.py
-WorkingDirectory= ~/Python/pi-shutdown/
+ExecStart=/usr/bin/python3 /home/pi/pi-shutdown/pishutdown.py
+WorkingDirectory= /home/pi/pi-shutdown/
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
@@ -30,17 +59,9 @@ Group=root
 WantedBy=multi-user.target
 ```
 
-## Enable service:
-```
-sudo systemctl enable pishutdown.service
-```
-Run service (will be automatically started on next reboot):
-```
-sudo systemctl start pishutdown.service
-```
 
 ## Added by fred:
-led toggle during normal running
+led toggle 5 secondes during normal running
 
 led will keep high during reboot
 

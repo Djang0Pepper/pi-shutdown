@@ -53,12 +53,15 @@ def buttonStateChanged(pin):
             buttonPressedTime = None
             if elapsed >= shutdownMinSeconds:
                 # button pressed for more than specified time, shutdown
-                call(['shutdown', '-h', 'now'], shell=False)
                 GPIO.output(LED, GPIO.LOW) #On l’éteint
+		time.sleep(3)
+                call(['shutdown', '-h', 'now'], shell=False)
             elif elapsed >= debounceSeconds:
                 # button pressed for a shorter time, reboot
-                call(['shutdown', '-r', 'now'], shell=False)
+	        time.sleep(3)
                 GPIO.output(LED, GPIO.HIGH) #On l’allume
+                call(['shutdown', '-r', 'now'], shell=False)
+
 
 
 # subscribe to button presses
