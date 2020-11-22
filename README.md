@@ -1,11 +1,11 @@
 #pi-shutdown
 ===========
-Shutdown/reboot(/power on) Raspberry Pi with pushbutton
+Shutdown/reboot(/power on) Raspberry Pi with a push button
 
 ## Pinout :
-Connect pushbutton to GPIO pin 40 gpio 21 and ground then
+Connect pushbutton to GPIO pin 40 gpio 21 and ground 
 
-Connect led        to GPIO pin 37 gpio 26 and ground then run:
+Connect led        to GPIO pin 37 gpio 26 and ground
 
 check image  
 
@@ -13,15 +13,15 @@ check image
 
 ```
 cd /home/pi
-sudo git clone https://github.com/Djang0Pepper/TMIGE.git
+sudo git clone https://github.com/Djang0Pepper/pi-shutdown.git
 sudo pip install RPi.GPIO
 sudo python pishutdown.py
 ```
 
-test led blink then short press for rebbot and long press to stop
+test led blink then short press for reboot and long press to stop
 
 
-## Autostart the script and Enable service:
+## Autostart script :
 
 If you’re using systemd then create a file called pishutdown.service in */etc/systemd/system/*
 
